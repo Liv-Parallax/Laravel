@@ -29,58 +29,26 @@ Route::view('/tasks', 'tasks', [
     ]
 ]);
 
-// Using get to display it using view, post to send/retrieve the information.
-Route::get('/ideas', function () {
-    // $ideas = DB::table('ideas')->get();  // Trad way to retrieve data from the mainpage.
+// // Using get to display it using view, post to send/retrieve the information.
+// Route::get('/ideas', function () {
+//     // $ideas = DB::table('ideas')->get();  // Trad way to retrieve data from the mainpage.
 
 
-    // $ideas = Idea::find(1);  // This finds the ID 1 row. 
-    // $ideas = Idea::where('description', 'blah')->get();  // example of a selection of the database.
-    // dd($ideas);
+//     // $ideas = Idea::find(1);  // This finds the ID 1 row. 
+//     // $ideas = Idea::where('description', 'blah')->get();  // example of a selection of the database.
+//     // dd($ideas);
 
-    $ideas = Idea::all();
+//     $ideas = Idea::all();
 
-    return view('ideas.index', [
-        'ideas' => $ideas,
-    ]);
-});
-// store
-Route::post('/ideas', function () {
-    // session()->push('ideas', $idea);
+//     return view('ideas.index', [
+//         'ideas' => $ideas,
+//     ]);
+// });
 
-    $idea = Idea::create([
-        'description' => request('description'),
-    ]);
-
-    return redirect('/ideas');
-});
-// create 
-Route::get('/ideas/create', function () {
-    return view('ideas.create');
-});
-// show
-Route::get('/ideas/{idea}', function (Idea $idea) {
-    return view('ideas.show', [
-        'idea' => $idea,
-    ]);
-});
-// edit
-Route::get('/ideas/{idea}/edit', function (Idea $idea) {
-    return view('ideas.edit', [
-        'idea' => $idea,
-    ]);
-});
-// update
-Route::patch('/ideas/{idea}', function (Idea $idea) {
-    $idea->update([
-        'description' => request('description'),
-    ]);
-
-    return redirect("/ideas/{$idea->id}");
-});
-// destroy
-Route::delete('/ideas/{idea}', function (Idea $idea) {
-    $idea->delete();
-
-    return redirect('/ideas');
-});
+Route::get('/ideas', [IdeaController::class, 'index']);
+Route::get('/ideas/create', [IdeaController::class, 'create']);
+Route::post('/ideas', [IdeaController::class, 'store']);
+Route::get('/ideas/{idea}', [IdeaController::class, 'show']);
+Route::get('/ideas/{idea}/edit', [IdeaController::class, 'edit']);
+Route::patch('/ideas/{idea}', [IdeaController::class, 'update']);
+Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy']);
