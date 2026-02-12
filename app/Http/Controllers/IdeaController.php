@@ -30,9 +30,9 @@ class IdeaController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([                  // used to not allow the user to send null fields.
-            'description' => ['required', 'min:10'],
-        ]);
+        // request()->validate([                  // validation.
+        //     'description' => ['required', 'min:10'],
+        // ]);
 
         $idea = Idea::create([
             'description' => request('description'),
