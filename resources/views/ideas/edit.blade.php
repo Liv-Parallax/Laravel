@@ -11,10 +11,17 @@
           <p class="mt-3 text-sm/6 text-gray-400">Update an idea.</p>
         </div>
 
-        <div class="mt-6 flex items-center justify-end gap-x-6">
+        <div class="mt-6 flex items-center justify-end gap-x-3">
             <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Update</button>
+ 
+            <button type="submit" form="delete-idea-form" class="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Delete</button>
         </div>
 
+    </form>
+
+    <form id="delete-idea-form" method="POST" action="/ideas/{{$idea->id}}">
+        @csrf
+        @method('DELETE')
     </form>
 
 </x-layout>

@@ -65,7 +65,7 @@ Route::patch('/ideas/{idea}', function (Idea $idea) {
 
     return redirect("/ideas/{$idea->id}");
 });
-
+// store
 Route::post('/ideas', function () {
     // session()->push('ideas', $idea);
 
@@ -75,8 +75,9 @@ Route::post('/ideas', function () {
 
     return redirect('/ideas');
 });
-Route::get('/delete-items', function() {
-    Idea::truncate();
+// destroy
+Route::delete('/ideas/{idea}', function (Idea $idea) {
+    $idea->delete();
 
     return redirect('/ideas');
 });

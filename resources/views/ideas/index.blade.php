@@ -1,5 +1,5 @@
 <x-layout title="Login page">
-    <form method="POST" action="/index">
+    <form method="POST" action="/ideas">
         @csrf
 
         <div class="col-span-full">
