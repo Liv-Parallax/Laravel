@@ -6,17 +6,26 @@
         <title>{{$title}}</title>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     </head>
-    <body class="bg-gray-700 p-6 max-w-xl mx-auto">
-        <nav>
-            <a href="/">Home</a>
-            <a href="/about">About us</a>
-            <a href="/contact">Contact us</a>
-            <a href="/tasks">Tasks remaining!</a>
-            <a href="/ideas">Enter an idea</a>
+    <body class="bg-gray-700 p-6 max-w-xl mx-auto text-white">
+        <nav class="mb-6 border-b border-white/10 pb-3">
+            <ul class="flex gap-4 list-none m-0 p-0">
+                <li>
+                    <a href="/" class="hover:text-indigo-300">Home</a>
+                </li>
+                <li>
+                    <a href="/about" class="hover:text-indigo-300">About us</a>
+                </li>
+                <li>
+                    <a href="/contact" class="hover:text-indigo-300">Contact us</a>
+                </li>
+                <li>
+                    <a href="/ideas" class="hover:text-indigo-300">Enter a NEW idea</a>
+                </li>
+            </ul>
         </nav>
-    </body>
 
-    <main>
-        {{$slot}}
-    </main>
+        <main>
+            {{$slot}}
+        </main>
+    </body>
 </html>

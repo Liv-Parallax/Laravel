@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Idea;
+use App\Http\Controllers\IdeaController;
 
 
 Route::view('/', 'Welcome', [

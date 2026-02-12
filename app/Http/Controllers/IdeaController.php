@@ -18,7 +18,6 @@ class IdeaController extends Controller
             'ideas' => $ideas,
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -26,19 +25,21 @@ class IdeaController extends Controller
     {
         return view('ideas.create');
     }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        request()->validate([                  // used to not allow the user to send null fields.
+            'description' => ['required', 'min:10'],
+        ]);
+
         $idea = Idea::create([
             'description' => request('description'),
         ]);
     
         return redirect('/ideas');
     }
-
     /**
      * Display the specified resource.
      */
@@ -48,7 +49,6 @@ class IdeaController extends Controller
             'idea' => $idea,
         ]);
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -58,7 +58,6 @@ class IdeaController extends Controller
             'idea' => $idea,
         ]);
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -70,7 +69,6 @@ class IdeaController extends Controller
     
         return redirect("/ideas/{$idea->id}");
     }
-
     /**
      * Remove the specified resource from storage.
      */
