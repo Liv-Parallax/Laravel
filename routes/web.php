@@ -44,7 +44,20 @@ Route::get('/ideas', function () {
         'ideas' => $ideas,
     ]);
 });
+// store
+Route::post('/ideas', function () {
+    // session()->push('ideas', $idea);
 
+    $idea = Idea::create([
+        'description' => request('description'),
+    ]);
+
+    return redirect('/ideas');
+});
+// create 
+Route::get('/ideas/create', function () {
+    return view('ideas.create');
+});
 // show
 Route::get('/ideas/{idea}', function (Idea $idea) {
     return view('ideas.show', [
@@ -64,16 +77,6 @@ Route::patch('/ideas/{idea}', function (Idea $idea) {
     ]);
 
     return redirect("/ideas/{$idea->id}");
-});
-// store
-Route::post('/ideas', function () {
-    // session()->push('ideas', $idea);
-
-    $idea = Idea::create([
-        'description' => request('description'),
-    ]);
-
-    return redirect('/ideas');
 });
 // destroy
 Route::delete('/ideas/{idea}', function (Idea $idea) {
