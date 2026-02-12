@@ -19,7 +19,7 @@
                     <a href="/contact" class="hover:text-indigo-300">Contact us</a>
                 </li>
                 <li>
-                    <a href="/ideas" class="hover:text-indigo-300">Enter a NEW idea</a>
+                    <a href="/ideas" class="hover:text-indigo-300">Ideas</a>
                 </li>
             </ul>
         </nav>
