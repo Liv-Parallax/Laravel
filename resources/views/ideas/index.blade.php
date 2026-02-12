@@ -23,9 +23,8 @@
          
             <ul>
                 @foreach($ideas as $idea)
-                    <li>
-                        {{ $idea->description }}
-                    </li>
+                    <a href="/ideas/{{$idea->id}}">{{ $idea->description }}</a>
+                    <br />
                 @endforeach
             </ul>
         </div>
