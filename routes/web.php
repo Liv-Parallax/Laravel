@@ -45,18 +45,32 @@ Route::get('/ideas', function () {
     ]);
 });
 
+// show
 Route::get('/ideas/{idea}', function (Idea $idea) {
     return view('ideas.show', [
         'idea' => $idea,
     ]);
 });
+// edit
+Route::get('/ideas/{idea}/edit', function (Idea $idea) {
+    return view('ideas.edit', [
+        'idea' => $idea,
+    ]);
+});
+// update
+Route::patch('/ideas/{idea}', function (Idea $idea) {
+    $idea->update([
+        'description' => request('description'),
+    ]);
 
+    return redirect("/ideas/{$idea->id}");
+});
 
 Route::post('/ideas', function () {
     // session()->push('ideas', $idea);
 
     $idea = Idea::create([
-        'description' => request('ideas'),
+        'description' => request('description'),
     ]);
 
     return redirect('/ideas');

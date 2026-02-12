@@ -1,4 +1,4 @@
-<x-layout title="Login page">
+<x-layout title="Show record">
 
     <h1>Ideas</h1>
 
